@@ -1,0 +1,177 @@
+* { /*resetando as configurações que o próprio navegador seta*/
+    margin: 0;
+    padding: 0; /*preenchimento interno das caixas*/
+    box-sizing: border-box; /**/
+}
+
+ul {
+    list-style: none; /*remove os pontos indicadores de lista(decoração)*/
+}
+
+body {
+    background-image: url(./assets/bg.jpg);
+    background-position: top center;
+    background-size: 100% auto; /*100% -> largura, auto -> altura. Configurado para dar responsividade ao aumentar e diminuir a página*/
+    background-repeat: no-repeat; /*Por padrão ele ficaria repetindo várias vezes a img. uma abaixo da outra ou ao lado, essa config 
+                                   não deixa repetir, ou seja, aparece somente 1x*/
+    background-color: #121214; /*copiado do figma. Ele faz a continuação da cor da imagem para o resto da página*/
+}
+
+body * {
+    font-family: inter, sans-serif;
+    line-height: 160%;
+}
+
+main {
+    max-width: 580px;
+    width: 90%;
+    margin: auto; /*calcula automaticamente o mesmo valor para as margens laterais*/
+    margin-top: 32px;
+    margin-bottom: 44px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+header {
+    text-align: center;
+    padding-top: 32px;
+    height: 152px;
+    /* height: calc(120px + 32px);  | faz a mesma coisa da linha acima*/
+}
+
+header div {
+    width: 120px;
+    margin: auto;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    border-radius: 50%;
+    display: flex;
+    padding: 4px;
+
+    transition: transform .3s; /*Fará uma transição de .3s(300 milissegundos) ao receber um transform*/
+}
+
+header div:hover {
+    transform: scale(1.1); /*Transforma a escala para 1.1 ao passar o mouse pelo header div(foto do perfil)*/
+}
+
+header div img {
+    width: 100%; /*100% do header div*/
+    border-radius: 50%;
+}
+
+section {
+    color: white;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
+    padding-top: 4px;
+    border-radius: 10px;
+}
+
+section h2 {
+    font-weight: 900; /*escala de negrito da fonte*/
+    font-size: 24px; /*tamanho da fonte*/
+    letter-spacing: -0.47px; /*espaço entre as letras*/
+}
+
+section p {
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: -0.18px;
+    color: #A1A1AA;
+}
+
+section ul {
+    display: flex; /*display: visualização das caixas, flex: um elemento ao lado do outro dentro da caixa*/
+    flex-wrap: wrap; /*caso haja vários elementos dentro da caixa, ele vai empurar para baixo*/
+    gap: 16px; /*só funciona pq definiu o display flex. Ele vai dar um espaçamento entre os elementos(li) de 16px*/
+    margin-top: 24px;
+
+}
+
+section div {
+    background-color: #2A2634;
+    padding: 32px;
+    padding-top: 24px;
+    border-radius: 8px;
+}
+
+.games-list img{ /*configuração das imagens da caixa de jogos*/
+    width: 90px;
+    border-radius: 8px;
+}
+
+.channel-list img{
+    width: 70px;
+    border-radius: 50%;
+    border: 1px solid #443e54;
+}
+
+section img{
+        display: inline-block;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: -webkit-transform;
+        transition-property: transform;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+      }
+      
+section img:hover {
+        -webkit-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+        transform: translateY(-5px);
+        box-shadow: 8px 8px 8px 0px rgba(0, 0, 0, 0.69);
+      }
+
+
+
+/*Animation*/
+
+header div { /*Animação do elemento presente no header div(imagem do perfil)*/
+    animation: fromTop .7s;
+    animation-delay: .2s; /*inicia a animação após 1seg*/
+    animation-fill-mode: backwards; /*Faz com que o componente obtenha os valores de estilo definidos pelo primeiro quadro-chave, ou seja antes do início da animação.*/
+}
+
+main section {
+    animation: fromBottom .7s;
+    animation-fill-mode: backwards;
+}
+
+main section:nth-child(1) { /*forma de chamar, neste caso, os sections contidos no main em ordem e temos 3 deles.*/
+    animation-delay: 0;
+}
+
+main section:nth-child(2) {
+    animation-delay: .3s;
+}
+
+main section:nth-child(3){
+    animation-delay: .6s;
+}
+
+@keyframes fromTop { /*@keyframes serve pra dar início à animação | No lugar de fromTop pode ser qualquer nome que eu quiser*/
+    from {
+        opacity: 0;
+        transform: translateY(-30px); /*vai iniciar de -30px do eixo Y..*/
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0); /*.. e termina em 0, que é a posição original dele*/
+    }
+}
+
+@keyframes fromBottom { /*Vai fazer a animação dos quadros de baixo para cima*/
+    from {
+        opacity: 0;
+        transform: translatex(-30px); /*vai iniciar de -30px do eixo Y..*/
+    }
+
+    to {
+        opacity: 1;
+        transform: translatex(0); /*.. e termina em 0, que é a posição original dele*/
+    }
+}
