@@ -48,6 +48,7 @@ header div {
     border-radius: 50%;
     display: flex;
     padding: 4px;
+    height: 120PX;
 
     transition: transform .3s; /*Fará uma transição de .3s(300 milissegundos) ao receber um transform*/
 }
